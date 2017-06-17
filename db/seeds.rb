@@ -37,8 +37,10 @@ r5 = Run.create name: "Air Jordan", difficulty: "Double Black", length: "600"
 
 ##### RELATIONSHIP SEEDS #####
 
-#USER -> MOUTNAINS
-
+#USER -> MOUNTAINS
+u1.mountains << m1 << m2 << m3
+u2.mountains << m1 << m2 << m3
+u3.mountains << m1 << m2 << m3
 
 #Reverse
 
