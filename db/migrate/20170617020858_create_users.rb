@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :age
       t.string :ski_type
       t.text :photo
-      t.string :user_id
+      t.string :nickname
       t.string :nationality
       t.string :home_mountain
       t.string :password_digest

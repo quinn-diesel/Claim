@@ -46,8 +46,6 @@ ActiveRecord::Schema.define(version: 20170617123330) do
   create_table "runs_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "run_id",  null: false
-    t.index ["run_id", "user_id"], name: "index_runs_users_on_run_id_and_user_id", using: :btree
-    t.index ["user_id", "run_id"], name: "index_runs_users_on_user_id_and_run_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,7 +53,7 @@ ActiveRecord::Schema.define(version: 20170617123330) do
     t.integer  "age"
     t.string   "ski_type"
     t.text     "photo"
-    t.string   "user_id"
+    t.string   "nickname"
     t.string   "nationality"
     t.string   "home_mountain"
     t.string   "password_digest"

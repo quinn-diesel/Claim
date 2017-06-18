@@ -11,9 +11,9 @@
 
 #USERS
 User.destroy_all
-u1 = User.create name: "Jerry Stack", ski_type: "Skier", user_id: "JerryoftheDay"
-u2 = User.create name: "Bill Murray", ski_type: "Snowboarder", user_id: "Muzza"
-u3 = User.create name: "Tanner Hall", ski_type: "Skier", user_id: "THall420"
+u1 = User.create name: "Jerry Stack", ski_type: "Skier", nickname: "JerryoftheDay"
+u2 = User.create name: "Bill Murray", ski_type: "Snowboarder", nickname: "Muzza"
+u3 = User.create name: "Tanner Hall", ski_type: "Skier", nickname: "THall420"
 
 puts "Created #{ User.all.length } users"
 
@@ -51,7 +51,11 @@ u3.mountains << m1 << m2 << m3
 # u3.runs << r3 << r4 << r5
 
 #Reverse
-
+r1.users << u1 << u2 << u3
+r2.users << u1
+r3.users << u3
+r4.users << u1 << u2 << u3
+r5.users << u1 << u2
 
 #MOUNTAIN -> RUNS
 m1.runs << r1
