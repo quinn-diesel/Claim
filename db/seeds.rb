@@ -11,9 +11,9 @@
 
 #USERS
 User.destroy_all
-u1 = User.create name: "Jerry Stack", ski_type: "Skier", nickname: "JerryoftheDay"
-u2 = User.create name: "Bill Murray", ski_type: "Snowboarder", nickname: "Muzza"
-u3 = User.create name: "Tanner Hall", ski_type: "Skier", nickname: "THall420"
+u1 = User.create name: "Jerry Stack", ski_type: "Skier", nickname: "JerryoftheDay", email: "jerry@day.com", password: "chicken"
+u2 = User.create name: "Bill Murray", ski_type: "Snowboarder", nickname: "Muzza", email: "bill@murray.com", password: "chicken"
+u3 = User.create name: "Tanner Hall", ski_type: "Skier", nickname: "THall420", email: "thall@day.com", password: "chicken"
 
 puts "Created #{ User.all.length } users"
 

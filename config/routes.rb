@@ -1,67 +1,22 @@
 Rails.application.routes.draw do
 
-  get 'session/create'
-
-  get 'session/update'
-
-  get 'session/index'
-
-  get 'session/show'
-
-  get 'session/edit'
-
-  get 'session/new'
-
-  get 'session/destroy'
-
-  get 'create/Session'
-
-  get 'create/create'
-
-  get 'create/update'
-
-  get 'create/index'
-
-  get 'create/show'
-
-  get 'create/edit'
-
-  get 'create/new'
-
-  get 'create/destroy'
-
   root to: "static#show"
 
-  get 'static/create' => 'static#create'
+  ###### SESSION Routes ######
 
-  get 'static/destroy' => 'static#destroy'
-
-  get 'static/edit' => 'static#edit'
-
-  get 'static/update' => 'static#update'
-
-  get 'static/new' => 'static#new'
-
-  get 'static/index' => 'static#index'
-
-  get 'static/show' => 'static#show'
-
+  get    '/login' => 'session#new'
+  post   '/login' => 'session#create'
+  delete '/login' => 'session#destroy'
 
   resources :users
 
-  get '/users/create'=> 'users#create'
-
-  get '/users/destroy' => 'users#destroy'
-
-  get '/users/edit' => 'users#edit'
-
-  get '/users/new' => 'users#new'
-
-  get '/users/show' => 'users#index'
-
-  get '/users/index' => 'users#index'
-
-  get '/users/update' => 'users#update'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  ##### Summary of what is happening. Found in console with 'rails routes' #####
+  #   users GET    /users(.:format)          users#index
+  #          POST   /users(.:format)          users#create
+  # new_user GET    /users/new(.:format)      users#new
+  # edit_user GET    /users/:id/edit(.:format) users#edit
+  #     user GET    /users/:id(.:format)      users#show
+  #          PATCH  /users/:id(.:format)      users#update
+  #          PUT    /users/:id(.:format)      users#update
+  #          DELETE /users/:id(.:format)      users#destroy
 end

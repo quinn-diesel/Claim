@@ -1,4 +1,19 @@
 class UsersController < ApplicationController
+
+  ### Check the user login
+  before_action :get_user,        only: [ :show, :edit, :update ]
+  # before_action :check_if_admin,  only: [ :index ]
+
+  before_action :check_if_logged, only: [ :mixtape_create ]
+
+
+  # create the right path
+  def user
+    @user = User.find params["id"]
+  end
+
+
+  ### CRUD Working ###
   def create
     @user = User.create user_params
       if @user.id.present?
@@ -19,7 +34,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find params["id"]
+    #now in the before action
+    # @user = User.find params["id"]
   end
 
   def index
@@ -35,7 +51,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :photo)
+    params.require(:user).permit(:name, :email, :photo, :password, :password_confirmation)
   end
 
 end
