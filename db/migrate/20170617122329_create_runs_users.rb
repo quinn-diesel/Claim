@@ -1,4 +1,4 @@
-class CreateJoinTableUserRun < ActiveRecord::Migration[5.0]
+class CreateRunsUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :runs_users do |t|
       t.integer :user_id
