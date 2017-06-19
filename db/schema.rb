@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20170619002259) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "mountains_users", id: false, force: :cascade do |t|
-    t.integer "user_id",     null: false
-    t.integer "mountain_id", null: false
+  create_table "mountains_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "mountain_id"
   end
 
   create_table "runs", force: :cascade do |t|
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20170619002259) do
     t.integer  "mountain_id"
   end
 
-  create_table "runs_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "run_id",  null: false
+  create_table "runs_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "run_id"
   end
 
   create_table "users", force: :cascade do |t|
