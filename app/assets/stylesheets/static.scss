@@ -7,3 +7,13 @@ body {
   font-family: 'Nova Flat', cursive;
   text-align: center;
 }
+
+.welcome_button {
+  background-color: grey;
+  text-align: center;
+  display: flex;
+}
+
+.welcome_button-cell {
+  flex: 1;
+}

@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'create/update'
+
+  get 'create/index'
+
+  get 'create/show'
+
+  get 'create/edit'
+
+  get 'create/new'
+
+  get 'create/destroy'
+
   root to: "static#show"
 
   ###### SESSION Routes ######

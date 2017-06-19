@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   before_action :get_user,        only: [ :show, :edit, :update ]
   # before_action :check_if_admin,  only: [ :index ]
 
-  before_action :check_if_logged, only: [ :mixtape_create ]
+  before_action :check_if_logged, only: [ :moutain_create ]
 
 
   # create the right path
-  def user
+  def get_user
     @user = User.find params["id"]
   end
 
@@ -39,13 +39,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def update
     @user = @current_user
 
-    @usr.update user_params
+    @user.update user_params
     redirect_to user_path( params["id"] )
   end
 
