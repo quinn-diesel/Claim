@@ -10,6 +10,9 @@
 ##### MODEL SEEDS #####
 
 #USERS
+
+puts "Starting seed..."
+
 User.destroy_all
 u1 = User.create name: "Jerry Stack", ski_type: "Skier", nickname: "JerryoftheDay", email: "jerry@day.com", password: "chicken"
 u2 = User.create name: "Bill Murray", ski_type: "Snowboarder", nickname: "Muzza", email: "bill@murray.com", password: "chicken"
@@ -33,7 +36,7 @@ r3 = Run.create name: "Shoot the banker", difficulty: "Double Black", length: "1
 r4 = Run.create name: "Glacier Bowl", difficulty: "Black", length: "3000"
 r5 = Run.create name: "Air Jordan", difficulty: "Double Black", length: "600"
 
-
+puts "Made runs."
 
 ##### RELATIONSHIP SEEDS #####
 
@@ -41,6 +44,8 @@ r5 = Run.create name: "Air Jordan", difficulty: "Double Black", length: "600"
 u1.mountains << m1 << m2 << m3
 u2.mountains << m1 << m2 << m3
 u3.mountains << m1 << m2 << m3
+
+puts "User-mountain associations done."
 
 #Reverse
 
@@ -56,7 +61,12 @@ r3.users << u3
 r4.users << u1 << u2 << u3
 r5.users << u1 << u2
 
+puts "Run-user associations done."
+
+
 #MOUNTAIN -> RUNS
 m1.runs << r1
 m2.runs << r2 << r4 << r5
 m3.runs << r3
+
+puts "Mountain-run associations done."
