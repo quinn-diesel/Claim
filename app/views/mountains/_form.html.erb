@@ -1,0 +1,29 @@
+<%= form_for @mountain do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+
+  <%= f.label :size %>
+  <%= f.number_field :size %>
+  <br>
+
+  <%= f.label :number_of_runs %>
+  <%= f.number_field :number_of_runs %>
+  <br>
+
+  <%= f.label :map %>
+  <%= f.text_field :map %>
+  <br>
+
+  <%= f.label :highest_point %>
+  <%= f.number_field :highest_point %>
+  <br>
+
+  <%= f.label :number_of_bars %>
+  <%= f.number_field :number_of_bars %>
+  <br>
+
+  <%= f.submit %>
+
+<% end %>

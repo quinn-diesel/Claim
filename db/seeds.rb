@@ -22,9 +22,9 @@ puts "Created #{ User.all.length } users"
 
 #MOUNTAINS
 Mountain.destroy_all
-m1 = Mountain.create name: "Thredbo", number_of_runs: "25", highest_point: "2228"
-m2 = Mountain.create name: "Whistler", number_of_runs: "225", highest_point: "2440"
-m3 = Mountain.create name: "Revelstoke", number_of_runs: "100", highest_point: "2225"
+m1 = Mountain.create name: "Thredbo", number_of_runs: 25, highest_point: 2228
+m2 = Mountain.create name: "Whistler", number_of_runs: 225, highest_point: 2440
+m3 = Mountain.create name: "Revelstoke", number_of_runs: 100, highest_point: 2225
 
 puts "Created #{ Mountain.all.length } mountains"
 
