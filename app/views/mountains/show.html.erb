@@ -1,11 +1,22 @@
 <h2>Mountain Details</h2>
 
+
 <p>Name: <%= @mountain.name %> </p>
 <p>Size: <%= @mountain.size %> </p>
-<p>Number of runs: </p>
-<p>Map: <%= @mountain.map %> </p>
+<p>Number of runs: <%= @mountain.runs.length %> </p>
+<p>Map: <%= cl_image_tag @mountain.map %> </p>
 <p>Highest point: <%= @mountain.highest_point %></p>
 <p>Number of bars: <%= @mountain.number_of_bars %></p>
 
+<p>Runs skied:
 
-  <%= link_to 'Edit Mountain', mountain_path %>
+<% @user.mountains.runs.each do |r| %>
+
+  <p> <%= link_to r.name, run_path(r.id) %> </p>
+
+<% end %>
+</p>
+
+
+
+  <%= link_to 'Edit Mountain', edit_mountain_path( @mountain ) %>

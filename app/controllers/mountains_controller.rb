@@ -1,15 +1,14 @@
 class MountainsController < ApplicationController
 
   def create
-    @mountain = Mountain.create user_params
-      if @mountain.id.present?
-        redirect_to user_path(@mountain.id)
-      else
-      render :new
-    end
+    mountain = Mountain.create mountain_params
+    redirect_to "/moutains/#{ mountain.id }"
   end
 
   def update
+    mountain = Mountain.find params["id"]
+    mountain.update mountain_params
+    redirect_to "/mountains/#{ params["id"] }"
   end
 
   def index
@@ -21,6 +20,7 @@ class MountainsController < ApplicationController
   end
 
   def edit
+      @mountain = Mountain.find params[ "id" ]
   end
 
   def new
@@ -32,7 +32,7 @@ class MountainsController < ApplicationController
 
   private
   def mountain_params
-    params.require(:mountain).permit(:name)
+    params.require(:mountain).permit(:name, :size, :number_of_runs, :map, :highest_point, :number_of_bars)
   end
 
 

@@ -7,7 +7,7 @@
 <p>Name: <%= @user.name %> </p>
 <p>Age: <%= @user.age %> </p>
 <p>Sliding style: <%= @user.ski_type %> </p>
-<p>Sponsor shot: <%= @user.photo %> </p>
+<p>Sponsor shot: <%= cl_image_tag @user.photo %> </p>
 <p>Nickname: <%= @user.nickname %> </p>
 <p>Nationality: <%= @user.nationality %> </p>
 <p>Home Mountain: <%= @user.home_mountain %> </p>
@@ -22,4 +22,18 @@
 <% end %>
 </p>
 
-<p>Runs entered: </p>
+<p>
+  <%= form_tag update_user_mountains_path do %>
+  <%= label_tag :enter_new_mountain_skied %>
+  <%= collection_select( :mountain, :mountain_id, @mountains, :id, :name, {:prompt => true}, {multiple: true}) %>
+  <%= submit_tag( "Enter" ) %>
+  <% end %>
+</p>
+
+
+<p>
+  <%= form_tag do %>
+  <%= label_tag :enter_geo_tag %>
+  <%= submit_tag( "Start tracking" ) %>
+  <% end %>
+</p>

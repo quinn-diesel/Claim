@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_if_logged_in
-    redirect_to login_path unless @current_user.is.admin?
+    redirect_to login_path unless @current_user.present?
   end
 
   # def check_if_admin

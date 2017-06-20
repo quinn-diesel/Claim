@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  post '/update_user_mountains' => 'users#update_mountains'
+
   ##### Summary of what is happening. Found in console with 'rails routes' #####
   #   users GET    /users(.:format)          users#index
   #          POST   /users(.:format)          users#create

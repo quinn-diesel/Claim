@@ -34,6 +34,8 @@ gem 'bcrypt'
 
 gem 'rails_12factor'
 
+gem 'cloudinary'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

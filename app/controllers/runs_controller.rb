@@ -23,15 +23,15 @@ class RunsController < ApplicationController
   end
 
   def new
-    @mountain = Mountain.all
+    @run = Run.all
   end
 
   def destroy
   end
 
   private
-  def mountain_params
-    params.require(:mountain).permit(:name)
+  def run_params
+    params.require(:run).permit(:name)
   end
 
 end

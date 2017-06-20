@@ -1,11 +1,11 @@
-<%= form_for @mountain do |f| %>
+<%= form_for @mountain, html: {multipart: true} do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br>
 
   <%= f.label :size %>
-  <%= f.number_field :size %>
+  <%= f.text_field :size %>
   <br>
 
   <%= f.label :number_of_runs %>
@@ -13,11 +13,11 @@
   <br>
 
   <%= f.label :map %>
-  <%= f.text_field :map %>
+  <%= f.cl_image_upload :map %>
   <br>
 
   <%= f.label :highest_point %>
-  <%= f.number_field :highest_point %>
+  <%= f.text_field :highest_point %>
   <br>
 
   <%= f.label :number_of_bars %>

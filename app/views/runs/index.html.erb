@@ -1,2 +1,9 @@
-<h1>Runs#index</h1>
-<p>Find me in app/views/runs/index.html.erb</p>
+<h1>Runs Guide</h1>
+
+<ul>
+  <% @runs.each do |r| %>
+  <li>
+    <%= link_to r.name, run_path(r.id) %>
+  </li>
+  <% end %>
+</ul>
