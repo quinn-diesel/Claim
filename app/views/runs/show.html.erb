@@ -1,8 +1,26 @@
-<h2>Mountain Details</h2>
+<h2>Run Details</h2>
 
-<p>Name: <%= @run.name %> </p>
-<p>Size: <%= @run.size %> </p>
-<p>Number of runs: </p>
-<p>Map: <%= cl_image_tag @run.map %> </p>
-<p>Highest point: <%= @run.highest_point %></p>
-<p>Number of bars: <%= @run.number_of_bars %></p>
+<p>Name: <%= @run.name %></p>
+<p>Length: <%= @run.length %></p>
+<p>Diffiulty: <%= @run.difficulty %></p>
+<p>Number of deaths: <%= @run.number_of_deaths %></p>
+
+<!-- <p>Claim: -->
+  <%#= form_tag update_user_runs_path do %>
+  <%#= label_tag :enter_new_run_skied %>
+  <%#= collection_select("Y", "N") %>
+  <%#= submit_tag( "Enter" )%>
+  <%# end %>
+ <!-- </p> -->
+
+
+  <%#= form_tag update_user_mountains_path do %>
+  <%#= label_tag :enter_new_mountain_skied %>
+  <%#= collection_select( :mountain, :mountain_id, @mountains, :id, :name, {:prompt => true}, {multiple: true}) %>
+  <%#= submit_tag( "Enter" ) %>
+  <%# end  %>
+
+
+<p>Image: <%= cl_image_tag @run.image %> </p>
+
+<p>Mountain Location: <%= @run.mountain.name %></p>

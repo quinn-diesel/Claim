@@ -1,8 +1,20 @@
 class MountainsController < ApplicationController
 
   def create
-    mountain = Mountain.create mountain_params
-    redirect_to "/moutains/#{ mountain.id }"
+    @mountain = Mountain.new(mountain_params)
+
+    if params[:file].present?
+      # perform upload to cloundinary
+      req = Cloudinary::Uploader.upload params[:file]
+      @mountain.photo = req['public_id']
+    end
+
+    if @mountain.save
+      session[:mountain_id] = @mountain.id
+      redirect_to user_path(@mountain.id)
+    else
+      render :new
+    end
   end
 
   def update
@@ -17,14 +29,27 @@ class MountainsController < ApplicationController
 
   def show
     @mountain = Mountain.find params[ "id" ]
+    # @runs = Runs.where(mountain: @mountain)
+    # @user_runs = Run.where mountain: @mountain, user: @current_user if @current_user.present?
+    if @current_user.present?
+      @user_runs = @current_user.runs.where(mountain: @mountain)
+    end
   end
 
+  def update_runs
+    run = params[:run][:run_id]
+    @current_user.runs << Mountain.where(id: runs) # add all selected runs to the mountain list
+
+    redirect_to mountain_path(@current_user)
+  end
+
+
   def edit
-      @mountain = Mountain.find params[ "id" ]
+    @mountain = Mountain.find params[ "id" ]
   end
 
   def new
-    @mountain = Mountain.all
+    @mountain = Mountain.new
   end
 
   def destroy

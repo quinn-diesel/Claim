@@ -46,6 +46,7 @@ class UsersController < ApplicationController
     #now in the before action
     # @user = User.find params["id"]
     @mountains = Mountain.all
+    @mountain_name = Mountain.name
   end
 
   def index

@@ -1,4 +1,4 @@
-<h2>Rider Details</h2>
+<h2>Rider Deets</h2>
 
 <% if @current_user == @user %>
   <%= link_to 'Edit Profile', edit_user_path(@user) %>
@@ -13,21 +13,40 @@
 <p>Home Mountain: <%= @user.home_mountain %> </p>
 <p>Email: <%= @user.email %> </p>
 
-<p>Mountains skied:
+<h2>Mountain Information</h2>
+
+<p>Mountains Claimed:
 
 <% @user.mountains.each do |m| %>
 
-  <p> <%= link_to m.name, mountain_path(m.id) %> </p>
+  <p> <%= link_to m.name, mountain_path(m.id) %> count runs for this moutains / m.runs.length </p>
 
 <% end %>
 </p>
 
 <p>
+  Mountains left to ski:
+
+  <% @mountains.each do |l| %>
+    <p>
+      <%= link_to l.name, mountain_path(l.id) %>
+    </p>
+    <% end %>
+
+  <input id="checkbox" type="checkbox" >
+</p>
+
+
+<p>
   <%= form_tag update_user_mountains_path do %>
-  <%= label_tag :enter_new_mountain_skied %>
-  <%= collection_select( :mountain, :mountain_id, @mountains, :id, :name, {:prompt => true}, {multiple: true}) %>
+  <%= label_tag :mountains_to_claim %>
+  <%= collection_radio_buttons( :mountain, :mountain_id, @mountains, :id, :name, {:prompt => true}, {multiple: true}) %>
   <%= submit_tag( "Enter" ) %>
   <% end %>
+</p>
+
+<p>
+  <button> <%= link_to 'New sliding shrine', new_mountain_path %> </button>
 </p>
 
 

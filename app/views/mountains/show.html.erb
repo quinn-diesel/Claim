@@ -8,15 +8,23 @@
 <p>Highest point: <%= @mountain.highest_point %></p>
 <p>Number of bars: <%= @mountain.number_of_bars %></p>
 
-<p>Runs skied:
+<%= link_to 'Edit Mountain', edit_mountain_path( @mountain ) %>
 
-<% @user.mountains.runs.each do |r| %>
+<h2>Your <%= @mountain.name %> Claim history</h2>
 
-  <p> <%= link_to r.name, run_path(r.id) %> </p>
+<p><%= @mountain.name %> Runs skied:
+
+<% @user_runs.each do |r| %>
+
+  <p> <%= link_to r.name, run_path(r.id) %></p>
 
 <% end %>
 </p>
 
+<h3>What you still have to claim</h3>
 
+All <%= @mountain.name %> runs:
 
-  <%= link_to 'Edit Mountain', edit_mountain_path( @mountain ) %>
+  <%#= Runs.where(:mountain @mountain) %> <%#= check_box_tag :ridden, false, is_checked? %>
+
+  <%# end %>

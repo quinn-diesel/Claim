@@ -1,18 +1,17 @@
 class RunsController < ApplicationController
   def create
-    @runs = Run.create user_params
-      if @run.id.present?
-        redirect_to user_path(@run.id)
-      else
-      render :new
-    end
+    run = Run.create mountain_params
+    redirect_to "/runs/#{ run.id }"
   end
 
   def update
+    run = Run.find params["id"]
+    run.update run_params
+    redirect_to "/run/#{ run["id"] }"
   end
 
   def index
-    @run = Run.all
+    @runs = Run.all
   end
 
   def show
@@ -20,6 +19,7 @@ class RunsController < ApplicationController
   end
 
   def edit
+    @run = Run.find params[ "id" ]
   end
 
   def new
@@ -31,7 +31,8 @@ class RunsController < ApplicationController
 
   private
   def run_params
-    params.require(:run).permit(:name)
+    params.require(:run).permit(:name, :id, :length, :difficulty, :number_of_deaths, :claim, :image)
   end
+
 
 end
