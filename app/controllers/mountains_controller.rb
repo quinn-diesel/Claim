@@ -1,5 +1,7 @@
 class MountainsController < ApplicationController
 
+  before_action :check_if_logged_in, except: [:index, :show]
+
   def create
     @mountain = Mountain.new(mountain_params)
 
@@ -18,9 +20,19 @@ class MountainsController < ApplicationController
   end
 
   def update
-    mountain = Mountain.find params["id"]
-    mountain.update mountain_params
-    redirect_to "/mountains/#{ params["id"] }"
+    @mountain = @current_mountain
+
+    if params[:file].present?
+      # perform upload to cloundinary
+      req = Cloudinary::Uploader.upload params[:file]
+      @mountain.photo = req['public_id']
+    end
+
+    @mountain.update mountain_params
+    redirect_to mountain_path( params["id"] )
+    # mountain = Mountain.find params["id"]
+    # mountain.update mountain_params
+    # redirect_to "/mountains/#{ params["id"] }"
   end
 
   def index
@@ -29,18 +41,32 @@ class MountainsController < ApplicationController
 
   def show
     @mountain = Mountain.find params[ "id" ]
+    @runs = Run.all
     # @runs = Runs.where(mountain: @mountain)
     # @user_runs = Run.where mountain: @mountain, user: @current_user if @current_user.present?
     if @current_user.present?
       @user_runs = @current_user.runs.where(mountain: @mountain)
+
+      user_run_ids = @user_runs.map do |r|
+        r.id
+      end
+
+      @user_remaining_runs = @mountain.runs.where.not(id: user_run_ids)
+
+      # puts "+"*50
+      # puts @user_remaining_runs.pluck :name
+
     end
   end
 
   def update_runs
-    run = params[:run][:run_id]
-    @current_user.runs << Mountain.where(id: runs) # add all selected runs to the mountain list
 
-    redirect_to mountain_path(@current_user)
+    # raise 'hell'
+
+    runs = params[:run][:run_id]
+    @current_user.runs << Run.where(id: runs) # add all selected runs to the user's list
+
+    redirect_to mountain_path(params[:mountain_id])
   end
 
 

@@ -1,2 +1,12 @@
-<h1>Runs#new</h1>
-<p>Find me in app/views/runs/new.html.erb</p>
+<h1>Create New Run</h1>
+
+<% if @run.errors.any? %>
+<ol>
+  <% @run.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ol>
+<% end %>
+
+
+<%= render partial: 'form' %>

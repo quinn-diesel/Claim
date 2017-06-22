@@ -1,26 +1,28 @@
-<h2>Run Details</h2>
+<h2>Run DeEts</h2>
 
 <p>Name: <%= @run.name %></p>
 <p>Length: <%= @run.length %></p>
 <p>Diffiulty: <%= @run.difficulty %></p>
 <p>Number of deaths: <%= @run.number_of_deaths %></p>
-
-<!-- <p>Claim: -->
-  <%#= form_tag update_user_runs_path do %>
-  <%#= label_tag :enter_new_run_skied %>
-  <%#= collection_select("Y", "N") %>
-  <%#= submit_tag( "Enter" )%>
-  <%# end %>
- <!-- </p> -->
-
-
-  <%#= form_tag update_user_mountains_path do %>
-  <%#= label_tag :enter_new_mountain_skied %>
-  <%#= collection_select( :mountain, :mountain_id, @mountains, :id, :name, {:prompt => true}, {multiple: true}) %>
-  <%#= submit_tag( "Enter" ) %>
-  <%# end  %>
-
-
 <p>Image: <%= cl_image_tag @run.image %> </p>
-
 <p>Mountain Location: <%= @run.mountain.name %></p>
+
+
+<h3>Claim History</h3>
+
+<p>
+  <button>
+    CLAIM
+  </button>
+</p>
+
+<p>
+  Number of times run claimed:
+</p>
+
+
+<!-- <%= button_to "Click Me", root_path, method: :get %>  -->
+
+<p>
+  Total claim stats: (this will be added later)
+</p>

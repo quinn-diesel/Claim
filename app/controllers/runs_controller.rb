@@ -1,7 +1,20 @@
 class RunsController < ApplicationController
   def create
-    run = Run.create mountain_params
-    redirect_to "/runs/#{ run.id }"
+    @run = Run.new(run_params)
+
+    if params[:file].present?
+      # perform upload to cloundinary
+      req = Cloudinary::Uploader.upload params[:file]
+      @run.photo = req['public_id']
+    end
+
+    if @run.save
+      session[:run_id] = @run.id
+      redirect_to user_path(@run.id)
+    else
+      render :new
+    end
+
   end
 
   def update
@@ -23,7 +36,7 @@ class RunsController < ApplicationController
   end
 
   def new
-    @run = Run.all
+    @run = Run.new
   end
 
   def destroy
@@ -31,7 +44,7 @@ class RunsController < ApplicationController
 
   private
   def run_params
-    params.require(:run).permit(:name, :id, :length, :difficulty, :number_of_deaths, :claim, :image)
+    params.require(:run).permit(:name, :id, :length, :difficulty, :number_of_deaths, :claim, :image, )
   end
 
 

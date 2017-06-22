@@ -33,7 +33,9 @@ Rails.application.routes.draw do
 
   resources :users
 
-  post '/update_user_mountains' => 'users#update_mountains'
+  post '/update_user_mountains/:user_id' => 'users#update_mountains', as: 'update_user_mountains'
+
+  post '/update_user_mountain_runs/:mountain_id' => 'mountains#update_runs', as: 'update_user_mountain_runs'
 
   ##### Summary of what is happening. Found in console with 'rails routes' #####
   #   users GET    /users(.:format)          users#index

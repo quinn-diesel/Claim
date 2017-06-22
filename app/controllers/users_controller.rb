@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   ### Check the user login
-  before_action :get_user,        only: [ :show, :edit, :update ]
+  before_action :get_user,           only: [ :show, :edit, :update ]
   # before_action :check_if_admin,  only: [ :index ]
 
   before_action :check_if_logged_in, only: [ :moutain_create, :update_mountains ]
@@ -45,9 +45,26 @@ class UsersController < ApplicationController
   def show
     #now in the before action
     # @user = User.find params["id"]
+    @user = User.find params[ "id" ]
     @mountains = Mountain.all
-    @mountain_name = Mountain.name
-  end
+    # @mountains = Mountain.all
+
+    if @current_user.present?
+      # raise 'hell'
+      #return the array of all the users mountains
+      @user_mountains = @current_user.mountains.ids
+
+      #map all of the mountain ids
+      mountain_ids = @mountains.map do |m|
+        m.id
+      end
+
+      #display only the mountains which are remaining
+      @user_remaining_mountains = @mountains.where.not(id: @user_mountains)
+        end
+
+    end
+
 
   def index
     @users = User.all
@@ -58,7 +75,7 @@ class UsersController < ApplicationController
     mountains = params[:mountain][:mountain_id]
     @current_user.mountains << Mountain.where(id: mountains) # add all selected mountains to this user's list
 
-    redirect_to user_path(@current_user)
+    redirect_to user_path(params[:user_id])
   end
 
   def update

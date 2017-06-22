@@ -41,7 +41,7 @@ puts "Made runs."
 ##### RELATIONSHIP SEEDS #####
 
 #USER -> MOUNTAINS
-u1.mountains << m1 << m2 << m3
+u1.mountains << m2 << m3
 u2.mountains << m1 << m2 << m3
 u3.mountains << m1 << m2 << m3
 
@@ -55,11 +55,11 @@ puts "User-mountain associations done."
 # u3.runs << r3 << r4 << r5
 
 #Reverse
-r1.users << u1 << u2 << u3
+r1.users << u2 << u3
 r2.users << u1
 r3.users << u3
 r4.users << u1 << u2 << u3
-r5.users << u1 << u2
+r5.users << u2
 
 puts "Run-user associations done."
 

@@ -1,3 +1,4 @@
+
 <h2>Rider Deets</h2>
 
 <% if @current_user == @user %>
@@ -17,31 +18,19 @@
 
 <p>Mountains Claimed:
 
-<% @user.mountains.each do |m| %>
+<% @user.mountains.uniq.each do |m| %>
 
   <p> <%= link_to m.name, mountain_path(m.id) %> count runs for this moutains / m.runs.length </p>
 
 <% end %>
 </p>
 
-<p>
-  Mountains left to ski:
-
-  <% @mountains.each do |l| %>
-    <p>
-      <%= link_to l.name, mountain_path(l.id) %>
-    </p>
-    <% end %>
-
-  <input id="checkbox" type="checkbox" >
-</p>
-
 
 <p>
-  <%= form_tag update_user_mountains_path do %>
-  <%= label_tag :mountains_to_claim %>
-  <%= collection_radio_buttons( :mountain, :mountain_id, @mountains, :id, :name, {:prompt => true}, {multiple: true}) %>
-  <%= submit_tag( "Enter" ) %>
+  <%= form_tag update_user_mountains_path(@user) do %>
+  <%= label_tag :CLAIM_NEW_MOUTAIN %>
+  <%= collection_check_boxes( :mountain, :mountain_id, @user_remaining_mountains, :id, :name, {:prompt => true}, {multiple: true}) %>
+  <%= submit_tag( "Claim" ) %>
   <% end %>
 </p>
 

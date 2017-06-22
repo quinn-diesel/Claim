@@ -10,21 +10,37 @@
 
 <%= link_to 'Edit Mountain', edit_mountain_path( @mountain ) %>
 
+
+
 <h2>Your <%= @mountain.name %> Claim history</h2>
+
+
 
 <p><%= @mountain.name %> Runs skied:
 
-<% @user_runs.each do |r| %>
+  <% @user_runs.each do |r| %>
 
   <p> <%= link_to r.name, run_path(r.id) %></p>
 
 <% end %>
 </p>
 
+
 <h3>What you still have to claim</h3>
 
-All <%= @mountain.name %> runs:
+  <p>
+    <%= form_tag update_user_mountain_runs_path(@mountain) do %>
+      <%= label_tag %>
+      <%= collection_check_boxes( :run, :run_id, @user_remaining_runs, :id, :name, {:prompt => true}, {multiple: true}) %>
+      <br>
+      <%= submit_tag( "Claim" ) %>
+    <% end %>
+  </p>
 
-  <%#= Runs.where(:mountain @mountain) %> <%#= check_box_tag :ridden, false, is_checked? %>
+  <p>
+    <button> <%= link_to 'Enter new run', new_run_path %> </button>
+  </p>
 
-  <%# end %>
+<p>
+  <button> <%= link_to 'Back to mountain claim', user_path %></button>
+</p>
