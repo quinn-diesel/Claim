@@ -8,7 +8,7 @@ class MountainsController < ApplicationController
     if params[:file].present?
       # perform upload to cloundinary
       req = Cloudinary::Uploader.upload params[:file]
-      @mountain.photo = req['public_id']
+      @mountain.map = req['public_id']
     end
 
     if @mountain.save
