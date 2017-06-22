@@ -24,16 +24,6 @@
           <div class="col-lg-12">
           <h1>CLAIM</h1>
           <h3>CLAIM YOUR MOUNTAIN</h3>
-          <nav>
-          <% unless @current_user.present? %>
-            <button><%= link_to 'Login', login_path %></button> <button> <%= link_to 'Signup', new_user_path %> </button>
-          <% else %>
-            <p>
-              Welcome, <%= link_to @current_user.name, user_path(@current_user) %> |
-              <%= link_to 'Logout', login_path, method: :delete %>
-          </p>
-          <% end %>
-          </nav>
   	   </div>
         </div>
       </div>
@@ -42,8 +32,8 @@
   <!--Video Section Ends Here-->
 
 
-  <h1>CLAIM</h1>
-  <h2>CLAIM YOUR MONTAIN</h2>
+  <!-- <h4>CLAIM</h4>
+  <h5>CLAIM YOUR MONTAIN</h5> -->
 
 <source >
 
