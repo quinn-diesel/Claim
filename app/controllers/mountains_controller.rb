@@ -20,7 +20,8 @@ class MountainsController < ApplicationController
   end
 
   def update
-    @mountain = @current_mountain
+    @mountain = Mountain.find params["id"]
+
 
     if params[:file].present?
       # perform upload to cloundinary
@@ -30,9 +31,7 @@ class MountainsController < ApplicationController
 
     @mountain.update mountain_params
     redirect_to mountain_path( params["id"] )
-    # mountain = Mountain.find params["id"]
-    # mountain.update mountain_params
-    # redirect_to "/mountains/#{ params["id"] }"
+
   end
 
   def index

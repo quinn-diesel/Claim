@@ -1,4 +1,4 @@
-<h2>Mountain Details</h2>
+<h2><%= @mountain.name %>  Details</h2>
 
 
 <p>Name: <%= @mountain.name %> </p>
@@ -12,21 +12,21 @@
 
 
 
-<h2>Your <%= @mountain.name %> Claim history</h2>
+<h2>Your <%= @mountain.name %> CLAIM history</h2>
 
 
 
-<p><%= @mountain.name %> Runs skied:
+<h4><%= @mountain.name %> Runs skied:
 
   <% @user_runs.each do |r| %>
 
   <p> <%= link_to r.name, run_path(r.id) %></p>
 
 <% end %>
-</p>
+</h4>
 
 
-<h3>What you still have to claim</h3>
+<h3>Hurry up! You still have to claim: </h3>
 
   <p>
     <%= form_tag update_user_mountain_runs_path(@mountain) do %>

@@ -1,4 +1,4 @@
-<h2>Run DeEts</h2>
+<h2>Run Info</h2>
 
 <p>Name: <%= @run.name %></p>
 <p>Length: <%= @run.length %></p>
@@ -7,6 +7,7 @@
 <p>Image: <%= cl_image_tag @run.image %> </p>
 <p>Mountain Location: <%= @run.mountain.name %></p>
 
+<%= link_to 'Edit Run', edit_run_path( @run ) %>
 
 <h3>Claim History</h3>
 

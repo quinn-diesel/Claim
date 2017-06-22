@@ -19,7 +19,7 @@ class RunsController < ApplicationController
   end
 
   def update
-    @run = @current_run
+    @run = Run.find params["id"]
 
     if params[:file].present?
       req = Cloudinary::Uploader.upload params[:title]
@@ -29,14 +29,6 @@ class RunsController < ApplicationController
     @run.update run_params
     redirect_to mountain_path(params["id"])
   end
-
-  # def update_mountain
-  #
-  #   runs = params[:run][:run_id]
-  #   @current_mountain.runs << Mountain.where(id: mountains)
-  #   redirect_to mountain_path(params[:mountain_id])
-  #
-  # end
 
 
   def index
