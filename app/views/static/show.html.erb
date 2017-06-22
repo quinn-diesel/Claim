@@ -16,13 +16,6 @@
 
 <source >
 
-  <div class = 'welcome_button'>
-    <div id = 'sign-in'>Sign In</div>
-    <div id = 'sign-up'>Sign up</div>
-    <div id = 'geust'>Enter as geust</div>
-    <div id = 'mountain-show'>Check the mountains out</div>
-  </div>
-
   <nav>
   <% unless @current_user.present? %>
     <%= link_to 'Login', login_path %> | <%= link_to 'Signup', new_user_path %>

@@ -32,7 +32,7 @@ puts "Created #{ Mountain.all.length } mountains"
 Run.destroy_all
 r1 = Run.create name: "Michael's Mistke", difficulty: "Black", length: "800"
 r2 = Run.create name: "Spanky's Ladder", difficulty: "Dobule Black", length: "1600"
-r3 = Run.create name: "Shoot the banker", difficulty: "Double Black", length: "1700"
+r3 = Run.create name: "Kill the banker", difficulty: "Double Black", length: "1700"
 r4 = Run.create name: "Glacier Bowl", difficulty: "Black", length: "3000"
 r5 = Run.create name: "Air Jordan", difficulty: "Double Black", length: "600"
 

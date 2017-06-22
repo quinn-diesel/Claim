@@ -13,7 +13,7 @@ class MountainsController < ApplicationController
 
     if @mountain.save
       session[:mountain_id] = @mountain.id
-      redirect_to user_path(@mountain.id)
+      redirect_to mountain_path(@mountain.id)
     else
       render :new
     end

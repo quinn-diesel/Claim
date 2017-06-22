@@ -20,13 +20,7 @@
   <%= f.cl_image_upload :image %>
   <br>
 
-<p>
-    <!-- <%#= f.label :mountain %>
-    <%#= form_tag update_mountains_path do %>
-    <%#= label_tag :mountains_to_claim %>
-    <%#= collection_radio_boxes( :mountain, :mountain_id, @mountains, :id, :name, {:prompt => true}, {multiple: true}) %>
-    <%# end %>
-  </p> #-->
+  <%= f.hidden_field :mountain_id, :value => @mountain.id %> 
 
   <%= f.submit %>
 
