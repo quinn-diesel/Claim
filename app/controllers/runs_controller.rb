@@ -1,13 +1,18 @@
 class RunsController < ApplicationController
   def create
     @run = Run.new(run_params)
-    @mountain = Mountain.all
+
+    # @mountain = Mountain.all
 
     if params[:file].present?
       # perform upload to cloundinary
       req = Cloudinary::Uploader.upload params[:file]
       @run.image = req['public_id']
     end
+
+    @run.mountain_id = params[:mountain_id]
+
+    # raise 1
 
     if @run.save
       session[:run_id] = @run.id
@@ -55,7 +60,7 @@ class RunsController < ApplicationController
 
   private
   def run_params
-    params.require(:run).permit(:name, :id, :length, :difficulty, :number_of_deaths, :claim, :image, :mountain_id)
+    params.require(:run).permit(:name, :id, :length, :difficulty, :number_of_deaths, :claim, :image)
   end
 
 

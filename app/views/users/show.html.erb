@@ -8,7 +8,8 @@
 <p>Name: <%= @user.name %> </p>
 <p>Age: <%= @user.age %> </p>
 <p>Sliding style: <%= @user.ski_type %> </p>
-<p>Sponsor shot: <%= cl_image_tag @user.photo %> </p>
+<p>Sponsor shot:</p>
+<p><%= cl_image_tag @user.photo %> </p>
 <p>Nickname: <%= @user.nickname %> </p>
 <p>Nationality: <%= @user.nationality %> </p>
 <p>Home Mountain: <%= @user.home_mountain %> </p>
@@ -20,7 +21,7 @@
 
 <% @user.mountains.uniq.each do |m| %>
 
-  <p> <%= link_to m.name, mountain_path(m.id) %> count runs for this moutains / m.runs.length </p>
+  <p> <%= link_to m.name, mountain_path(m.id) %> </p>
 
 <% end %>
 </p>
@@ -35,7 +36,7 @@
 </p>
 
 <p>
-  <button> <%= link_to 'New sliding shrine', new_mountain_path %> </button>
+  <button> <%= link_to 'ENTER NEW MOUNTAIN', new_mountain_path %> </button>
 </p>
 
 

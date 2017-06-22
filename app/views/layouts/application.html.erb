@@ -29,7 +29,12 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="/users/:id">CLAIM</a>
+          <% if @current_user.present? %>
+            <%= link_to 'CLAIM', user_path(@current_user), class: "navbar-brand" %>
+          <!-- <a class="navbar-brand" href="/users/:id">CLAIM</a> -->
+          <% else %>
+            <%= link_to 'CLAIM', login_path, class: "navbar-brand" %>
+          <% end %>
           <form class="navbar-form navbar-left">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
