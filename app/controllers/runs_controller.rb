@@ -6,7 +6,7 @@ class RunsController < ApplicationController
     if params[:file].present?
       # perform upload to cloundinary
       req = Cloudinary::Uploader.upload params[:file]
-      @run.photo = req['public_id']
+      @run.image = req['public_id']
     end
 
     if @run.save
@@ -41,6 +41,7 @@ class RunsController < ApplicationController
 
   def edit
     @run = Run.find params[ "id" ]
+    @mountain = Mountain.find( params[:mountain_id] )
   end
 
   def new

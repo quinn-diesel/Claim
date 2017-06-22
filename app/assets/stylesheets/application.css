@@ -18,3 +18,7 @@
    font-family: 'Nova Flat', cursive;
    text-align: center;
  }
+
+#bs-example-navbar-collapse-1 {
+  align: right;
+}
