@@ -27,7 +27,7 @@ class RunsController < ApplicationController
     end
 
     @run.update run_params
-    redirect_to mountain_path(params["id"])
+    redirect_to mountain_path(@run.mountain)
   end
 
 
@@ -41,7 +41,7 @@ class RunsController < ApplicationController
 
   def edit
     @run = Run.find params[ "id" ]
-    @mountain = Mountain.find( params[:mountain_id] )
+    # @mountain = Mountain.find( params[:mountain_id] )
   end
 
   def new

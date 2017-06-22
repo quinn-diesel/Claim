@@ -15,10 +15,6 @@
  */
 
  body {
-   font-family: 'Nova Flat', cursive;
+   font-family: 'Nova Flat', cursive !important;
    text-align: center;
  }
-
-#bs-example-navbar-collapse-1 {
-  align: right;
-}
