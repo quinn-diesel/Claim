@@ -20,7 +20,9 @@
   <%= f.cl_image_upload :image %>
   <br>
 
+  <% unless "#{params[:controller]}.#{params[:action]}" == "runs.edit"%> 
   <%= hidden_field_tag :mountain_id, @mountain.id %>
+  <% end %>
 
   <%= f.submit %>
 

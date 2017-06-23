@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find params["id"]
   end
 
   def new
@@ -79,7 +80,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = @current_user
+    @user = User.find params["id"]
 
 
     if params[:file].present?
@@ -88,15 +89,17 @@ class UsersController < ApplicationController
       @user.photo = req['public_id']
     end
 
+
     @user.update user_params
     redirect_to user_path( params["id"] )
-
 
   end
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :photo, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :photo, :password, :password_confirmation, :nationality, :age, :ski_type, :nickname)
   end
+
+
 
 end
